@@ -5,9 +5,33 @@
       <router-link to="/films">Films</router-link>|
       <router-link to="/starships">Starships</router-link>
     </div>
-    <router-view />
+    <router-view :allDatas="allDatas" />
   </div>
 </template>
+
+<script>
+import { mapActions, mapGetters } from "vuex";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      routeName: null
+    };
+  },
+  watch: {
+    $route(to) {
+      this.getDatas(to.name + "/");
+    }
+  },
+  computed: {
+    ...mapGetters(["allDatas"])
+  },
+  methods: {
+    ...mapActions(["getDatas"])
+  }
+};
+</script>
 
 <style>
 #app {

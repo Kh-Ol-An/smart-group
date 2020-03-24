@@ -1,23 +1,22 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import People from "../views/People.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/people",
-    name: "People",
-    component: People
+    name: "people",
+    component: () => import("../views/People.vue")
   },
   {
     path: "/films",
-    name: "Films",
+    name: "films",
     component: () => import("../views/Films.vue")
   },
   {
     path: "/starships",
-    name: "Starships",
+    name: "starships",
     component: () => import("../views/Starships.vue")
   }
 ];
