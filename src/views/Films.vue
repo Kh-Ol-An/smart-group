@@ -1,10 +1,26 @@
 <template>
-  <div class="films">
-    <h1>This is an films page</h1>
-    <SearchForm />
-    <ul v-if="allDatas && allDatas.length">
-      <li v-for="film of allDatas" :key="film.name">
-        <h2>{{ film.title }}</h2>
+  <div class="page">
+    <h1 class="page__title">Films page</h1>
+    <SearchForm :routeName="routeName" />
+    <ul v-if="allDatas && allDatas.length" class="list">
+      <li v-for="film of allDatas" :key="film.name" class="list__item">
+        <h2 class="list__item-title">{{ film.title }} {{ film.episode_id }}</h2>
+        <p class="list__item-text">
+          Director:
+          <span class="list__item-data">{{ film.director }}</span>
+        </p>
+        <p class="list__item-text">
+          Producer:
+          <span class="list__item-data">{{ film.producer }}</span>
+        </p>
+        <p class="list__item-text">
+          Release date:
+          <span class="list__item-data">{{ film.director }}</span>
+        </p>
+        <p class="list__item-text">
+          Opening crawl:
+          <span class="list__item-data">{{ film.opening_crawl }}</span>
+        </p>
       </li>
     </ul>
   </div>
@@ -14,10 +30,13 @@
 import SearchForm from "@/components/SearchForm";
 
 export default {
-  name: "films",
   components: {
     SearchForm
   },
-  props: ["allDatas"]
+  props: ["allDatas", "routeName"]
 };
 </script>
+
+<style lang="css">
+@import "../styles/page.css";
+</style>

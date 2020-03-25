@@ -5,6 +5,10 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/",
+    redirect: "/people"
+  },
+  {
     path: "/people",
     name: "people",
     component: () => import("../views/People.vue")
